@@ -167,7 +167,7 @@ ajaxSender.addEventListener('click', () => {
 
 async function sendRequest() {
     const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
-    
+
     stateInfo.innerText = 'response status - ' + response.status;
     
     if( response.status == 200 ) {
@@ -188,3 +188,17 @@ async function sendRequest() {
 }
 
 axiosSender.addEventListener('click', sendRequest);
+
+// exo récupérer la liste des Todos
+// affichez les sur votre site
+// Ajouter un input permettant de choisir entre:
+//      - afficher toutes les tâches
+//      - afficher les tâches faites
+//      - afficher les tâches à réaliser
+// A coté de chaque Todo sera présent un bouton 'détail utilisateur'
+// cliquer dessus permettra d'afficher sur le coté quelques infos sur l'utilisateur
+// ayant posté cette tâche:
+//      - nom
+//      - username
+//      - email
+//      - nom de l'entreprise
