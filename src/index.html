@@ -11,28 +11,38 @@
 </head>
 <body>
     
-    <h1 class="display-1">Demo requetage</h1>
-
-    <div>
-        <h2>Lancer les callbacks</h2>
-        <button class="btn btn-info" id="btnCallback">lancer</button>
-    </div>
-    
-    <div>
-        <h2>Lancer la promesse</h2>
-        <button class="btn btn-info" id="btnPromise">lancer</button>
-    </div>
+    <h1 class="display-1 mb-3">Demo requetage</h1>
 
     <div class="container">
-        <p>GET - /posts</p>
-        <button class="btn btn-info" id="ajax-sender">envoyer via ajax</button>
-        <button class="btn btn-info" id="axios-sender">envoyer via axios</button>
+        <div class="mb-5">
+            <h2 class="display-3"> Asynchrone </h2>
+            <div>
+                <h3>Lancer les callbacks</h2>
+                <button class="btn btn-info" id="btnCallback">lancer</button>
+            </div>
+            <div>
+                <h3>Lancer la promesse</h2>
+                <button class="btn btn-info" id="btnPromise">lancer</button>
+            </div>
+        </div>
+        
+
+        <div>
+            <h2 class="display-3">Envoi de requete</h2>
+            <div>
+                <p>GET - https://jsonplaceholder.typicode.com/posts </p>
+                <button class="btn btn-info" id="ajax-sender">envoyer via ajax</button>
+                <button class="btn btn-info" id="axios-sender">envoyer via axios</button>
+            </div>
+
+            <div>
+                <p id="state-info"></p>   
+                <ul id="post-list"></ul>
+            </div>
+        </div>
     </div>
 
-    <p id="state-info"></p>   
-    <ul id="post-list">
-
-    </ul>
+    
 
     <script src="../node_modules/axios/dist/axios.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>

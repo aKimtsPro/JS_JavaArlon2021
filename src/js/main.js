@@ -70,6 +70,36 @@ btnPromise.addEventListener('click', () => {
         .then( (value) => console.log("last callback with data : " + value) )
 })
 
+// Les mots clefs async/await
+
+btnPromise.addEventListener('click', () => {
+    
+    // une fonction async renvoie une promesse
+    async function promise() {
+        doStuffProm();
+    }
+
+    promise()
+        .then( doOtherStuffProm )
+        .then( doThirdStuffProm )
+        .then( (value) => console.log("last callback with data : " + value) )
+})
+
+// Pour attendre le résultat d'une promesse, on peut utiliser await.
+// Dans du JS classique, uniquement utilisable dans une fonction async 
+promise = () => new Promise((ok, ko) => {
+    setTimeout(() => ok('data'), 2000)
+})
+
+async function awaitTest() {
+    let data = await promise();
+    console.log(data);
+}
+awaitTest();
+
+promise().then(console.log);
+
+
 
 // - AJAX demo
 
@@ -104,33 +134,57 @@ ajaxSender.addEventListener('click', () => {
 
 // axios
 
+// axiosSender.addEventListener('click',() => {
 
-axiosSender.addEventListener('click',() => {
+//     stateInfo.innerText = 'waiting for response';
 
-    stateInfo.innerText = 'waiting for response';
+//     // axios({
+//     //     method: 'GET',
+//     //     url: 'https://jsonplaceholder.typicode.com/posts'
+//     // })
 
-    // axios({
-    //     method: 'GET',
-    //     url: 'https://jsonplaceholder.typicode.com/posts'
-    // })
+//     axios.get("https://jsonplaceholder.typicode.com/posts")
+//         .then( (response) => {
+//             stateInfo.innerText = 'response status - ' + response.status;
+//             if( response.status == 200 ) {
+//                 response.data.forEach((e) => {
+//                     const li = document.createElement("li");
+//                         const title = document.createElement("h3");
+//                         const body = document.createElement("p");
 
-    axios.get("https://jsonplaceholder.typicode.com/posts")
-        .then( (response) => {
-            stateInfo.innerText = 'response status - ' + response.status;
-            if( response.status == 200 ) {
-                response.data.forEach((e) => {
-                    const li = document.createElement("li");
-                        const title = document.createElement("h3");
-                        const body = document.createElement("p");
+//                         title.innerText = e.title;
+//                         body.innerText = e.body;
 
-                        title.innerText = e.title;
-                        body.innerText = e.body;
+//                         li.appendChild( title );
+//                         li.appendChild( body );
 
-                        li.appendChild( title );
-                        li.appendChild( body );
+//                         postList.appendChild(li);
+//                 })
+//             }
+//         })
+// })
 
-                        postList.appendChild(li);
-                })
-            }
+
+async function sendRequest() {
+    const response = await axios.get("https://jsonplaceholder.typicode.com/posts");
+    
+    stateInfo.innerText = 'response status - ' + response.status;
+    
+    if( response.status == 200 ) {
+        response.data.forEach((e) => {
+            const li = document.createElement("li");
+            const title = document.createElement("h3");
+            const body = document.createElement("p");
+
+            title.innerText = e.title;
+            body.innerText = e.body;
+
+            li.appendChild( title );
+            li.appendChild( body );
+
+            postList.appendChild(li);
         })
-})
+    }
+}
+
+axiosSender.addEventListener('click', sendRequest);
