@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+    
+    <h1 class="display-1">Demo requetage</h1>
+
+    <div>
+        <h2>Lancer les callbacks</h2>
+        <button class="btn btn-info" id="btnCallback">lancer</button>
+    </div>
+    
+    <div>
+        <h2>Lancer la promesse</h2>
+        <button class="btn btn-info" id="btnPromise">lancer</button>
+    </div>
+
+    <div class="container">
+        <p>GET - /posts</p>
+        <button class="btn btn-info" id="ajax-sender">envoyer via ajax</button>
+        <button class="btn btn-info" id="axios-sender">envoyer via axios</button>
+    </div>
+
+    <p id="state-info"></p>   
+    <ul id="post-list">
+
+    </ul>
+
+    <script src="../node_modules/axios/dist/axios.js"></script>
+    <script src="../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+</html>
